@@ -1,0 +1,10 @@
+#!/bin/sh
+charging_status=$( cat /sys/class/power_supply/BAT1/status | awk '{print $1;}' )
+battery_level=$( cat /sys/class/power_supply/BAT1/capacity )
+
+if [ $charging_status = 'Charging' ] || [ $charging_status = 'Full'  ]; then
+	icons='⚡'
+else
+	icons='🔋'
+fi
+echo $icons$battery_level'%'

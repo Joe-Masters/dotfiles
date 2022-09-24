@@ -1,0 +1,80 @@
+HIGHLIGHT_STATUS=#ff69b4
+# tmux display things in 256 colour
+set -g default-terminal "screen-256color"
+
+
+set -g history-limit 20000
+
+# Status bar
+set status-position top
+set -g status-interval 5
+
+
+set -g status-right-length 150
+set -g status-right "\
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=#ee4499],} #(~/dotfiles/bin/battery)\
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}  %b %d '%y\
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}  %H:%M \
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS,}"
+
+# Theme stuff
+BG_COLOUR_INACTIVE=#1c1c1c
+BG_COLOUR_ACTIVE=#1b1b1b
+set -w window-style "bg=#1c1c1c"
+set -ag window-active-style "bg=#083c3a"
+set-option -g status-bg default
+set -ag status-style "fg=$HIGHLIGHT_STATUS"
+
+# set the pane border colors 
+set -ag pane-border-style "bg=#1c1c1c, fg=#4d4d4d" 
+set -ag pane-active-border-style "bg=#083c3a, fg=$HIGHLIGHT_STATUS"
+# automatically renumber tmux windows
+set -g renumber-windows on
+
+# unbind default prefix and set to Ctrl+a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+
+# for nested tmux sessions
+bind-key a send-prefix
+
+# Activity Monitoring
+setw -g monitor-activity off
+set -g visual-activity off
+
+# Constrain window size to the maximum size of any client connected to given window
+setw -g aggressive-resize on
+
+# make delay shorter
+set -g escape-time 0
+
+# tile all windows
+unbind =
+bind = select-layout tiled
+
+# reload config file
+bind r source-file ~/.tmux.conf \; display ".tmux.conf reloaded!"
+
+# Remapping pane keys
+unbind %
+bind | split-window -h
+unbind '"'
+bind - split-window -v
+
+#### copy mode : vim ####
+
+# set vi mode for copy mode
+setw -g mode-keys vi
+
+# copy mode using 'Esc'
+unbind [
+bind Escape copy-mode
+
+# paste using 'p'
+unbind p
+bind p paste-buffer
+
+#### KEY BINDINGS ####
+bind C-s set-option -g status
