@@ -6,15 +6,17 @@ set -g default-terminal "screen-256color"
 set -g history-limit 20000
 
 # Status bar
-set status-position top
+set -g status-position top
+set -g status-style "bg=#1c1c1c"
 set -g status-interval 5
 
+set -g status-left-length 150
 
 set -g status-right-length 150
 set -g status-right "\
 #[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=#ee4499],} #(~/dotfiles/bin/battery)\
-#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}  %b %d '%y\
-#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}  %H:%M \
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}🔹%d %b %y\
+#[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}🔹%H:%M \
 #[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS,}"
 
 # Theme stuff
@@ -72,9 +74,18 @@ setw -g mode-keys vi
 unbind [
 bind Escape copy-mode
 
+unbind -T copy-mode-vi Space; #Default for begin-selection
+unbind -T copy-mode-vi Enter; #Default for copy-selection
+
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
 # paste using 'p'
 unbind p
 bind p paste-buffer
 
 #### KEY BINDINGS ####
 bind C-s set-option -g status
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
