@@ -89,3 +89,9 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+
+### Remove Ctrl + key pane switching so as not to interfere with vim
+#unbind -T root C-h #select-pane -L
+#unbind -T root C-j #select-pane -D
+#unbind -T root C-k #select-pane -U
+#unbind -T root C-l #select-pane -R
