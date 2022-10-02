@@ -3,6 +3,8 @@
 
 require "user.options"
 require "user.keymaps"
+require "user.plugins"
+require "user.colorscheme"
 
 -- Tag jumpings with ctags
 --command! MakeTags !ctags -R .

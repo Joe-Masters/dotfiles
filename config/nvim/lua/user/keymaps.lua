@@ -30,6 +30,8 @@ local normal = {
     -- Navigate buffers
     { "<leader>bn", ":bnext<CR>" },
     { "<leader>bp", ":bprevious<CR>" },
+    -- Toggle Spellcheck
+    { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
 }
 
 for _, keymapping in ipairs(normal) do
@@ -41,3 +43,18 @@ end
 -- Press jk quickly to ESC
 keymap(insert_mode, "jk", "<ESC>", opts)
 
+local visual = {
+    -- Keep yanked text when pasting over highlighted text
+    { "p", '" _dP'},
+    -- Move text up and down (single line)
+    { "<A-j>", ":m .+1<CR>==gv-gv" },
+    { "<A-k>", ":m .-2<CR>==gv-gv" },
+    -- Move text up and down ((visual) block of text)
+    { "<A-j>", ":move '>+1<CR>gv-gv" },
+    { "<A-k>", ":move '<-2<CR>gv-gv" },
+}
+
+for _, keymapping in ipairs(visual) do
+    new_value, old_value = table.unpack(keymapping)
+    keymap(visual_mode, new_value, old_value, opts)
+end
