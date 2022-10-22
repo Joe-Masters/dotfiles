@@ -7,11 +7,33 @@ battery_ok='🔋'
 battery_low='🪫'
 
 if [ $charging_status = 'Charging' ] || [ $charging_status = 'Full'  ]; then
-    icons=$charging
-elif [ $battery_level -gt 25 ]; then 
-    icons=$battery_ok
+    icon=ﳦ
+#elif [ $battery_level == 100 ]; then
+ #   icon=
+#elif [ $battery_level -gt 25 ]; then 
+ #   icon=$battery_ok
 else
-    icons=$battery_low
+    case $battery_level in
+	100)
+	    icon=
+        ;;
+    
+	(-gt 75 && -lt 100)
+	    icon=
+        ;;
+    
+	-gt 50 && -lt 75)
+	    icon=
+        ;;
+    
+	-gt 10 && -lt 50)
+	    icon=
+        ;;
+
+	-lt 10)
+	    icon=
+	;;
+    esac
 fi
 
-echo $icons$battery_level'%'
+echo $icon $battery_level'%'
