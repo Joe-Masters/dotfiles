@@ -59,11 +59,11 @@ bind = select-layout tiled
 # reload config file
 bind r source-file ~/.tmux.conf \; display ".tmux.conf reloaded!"
 
-# Remapping pane keys
+# Remapping pane keys and make open in pwd for current pane
 unbind %
-bind | split-window -h
+bind | split-window -h -c "#{pane_current_path}"
 unbind '"'
-bind - split-window -v
+bind - split-window -v -c "#{pane_current_path}"
 
 #### copy mode : vim ####
 

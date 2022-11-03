@@ -20,9 +20,14 @@ local options = {
     spelllang = "en_gb",
     softtabstop = 4,
     tabstop = 8,
+    list = true,		    -- Show hidden chars
 }
 
 vim.opt.path:append { "**" }        -- equiv to .vim set path += ** for tab searching subdirs 
+
+-- Set hidden chars
+vim.opt.listchars.eol = '' 
+vim.opt.listchars.tab = '>-' 
 
 for option, value in pairs(options) do
     vim.opt[option] = value

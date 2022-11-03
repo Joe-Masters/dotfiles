@@ -3,10 +3,10 @@ local M = {}
 -- TODO: backfill this to template
 M.setup = function()
     local signs = {
-	{ name = "DiagnosticSignError", text = "X" },
-	{ name = "DiagnosticSignWarn", text = "!" },
-	{ name = "DiagnosticSignHint", text = "i" },
-	{ name = "DiagnosticSignInfo", text = "?" },
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -97,7 +97,6 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
-
