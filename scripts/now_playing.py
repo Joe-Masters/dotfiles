@@ -54,7 +54,7 @@ def main():
     status_icon = get_status_icon(player)
     artist, song = get_artist_and_song(player)
     if artist and song:
-        print(f"{status_icon} {song} - {artist}")
+        print(f"{MUSIC} {status_icon} {song} - {artist}")
     else:
         print("ﱙ")
 

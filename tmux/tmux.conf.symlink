@@ -8,7 +8,7 @@ set -g history-limit 20000
 # Status bar
 set -g status-position top
 set -g status-style "bg=#1c1c1c"
-set -g status-interval 5
+set -g status-interval 3
 
 set -g status-left-length 150
 

@@ -26,8 +26,8 @@ local options = {
 vim.opt.path:append { "**" }        -- equiv to .vim set path += ** for tab searching subdirs 
 
 -- Set hidden chars
-vim.opt.listchars.eol = '' 
-vim.opt.listchars.tab = '>-' 
+vim.opt.listchars.eol = ' '
+vim.opt.listchars.tab = '>- '
 
 for option, value in pairs(options) do
     vim.opt[option] = value

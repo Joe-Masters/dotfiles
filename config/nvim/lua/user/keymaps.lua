@@ -7,12 +7,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Modes
-normal_mode = "n"
-insert_mode = "i"
-visual_mode = "v"
-visual_block_mode = "x"
-term_mode = "t"
-command_mode = "c"
+local normal_mode = "n"
+local insert_mode = "i"
+local visual_mode = "v"
+local visual_block_mode = "x"
+local term_mode = "t"
+local command_mode = "c"
 
 local normal = {
     -- Simpler window navigation
@@ -32,10 +32,13 @@ local normal = {
     { "<leader>bp", ":bprevious<CR>" },
     -- Toggle Spellcheck
     { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
+    -- Telescope
+    { "<leader>/", "<cmd>Telescope live_grep<cr>" },
+    { "<leader>f", "<cmd>Telescope find_files<cr>" },
 }
 
 for _, keymapping in ipairs(normal) do
-    new_value, old_value = table.unpack(keymapping)
+    local new_value, old_value = table.unpack(keymapping)
     keymap(normal_mode, new_value, old_value, opts)
 end
 
@@ -55,6 +58,6 @@ local visual = {
 }
 
 for _, keymapping in ipairs(visual) do
-    new_value, old_value = table.unpack(keymapping)
+    local new_value, old_value = table.unpack(keymapping)
     keymap(visual_mode, new_value, old_value, opts)
 end

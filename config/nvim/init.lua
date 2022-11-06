@@ -7,6 +7,8 @@ require "user.plugins"
 require "user.colorscheme"
 require "user.cmp"
 require "user.lsp"
+require "user.telescope"
+require "user.treesitter"
 
 -- Tag jumpings with ctags
 --command! MakeTags !ctags -R .
