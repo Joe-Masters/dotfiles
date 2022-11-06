@@ -54,24 +54,3 @@ if __name__ == "__main__":
         icon = get_icon(status.capacity)
         print(f"{icon} {status.capacity}%")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

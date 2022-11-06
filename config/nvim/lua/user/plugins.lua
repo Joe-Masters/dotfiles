@@ -54,8 +54,8 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" 
 
     -- LSP
-    use "neovim/nvim-lspconfig"  -- enable LSP
-    use "williamboman/nvim-lsp-installer"  -- simple language installer
+    use "neovim/nvim-lspconfig"		    -- enable LSP
+    use "williamboman/nvim-lsp-installer"   -- simple language installer
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
