@@ -1,2 +1,2 @@
 # dotfiles
-My personal dotfiles
+Some garbage dotfiles
