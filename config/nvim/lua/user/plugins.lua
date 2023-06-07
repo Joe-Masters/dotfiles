@@ -42,22 +42,30 @@ packer.init({
 return packer.startup(function(use)
 
     use("wbthomason/packer.nvim") -- Have packer manage itself
+    use "numToStr/Comment.nvim"   -- Quick commenting
 
     -- Completion plugins
-    use "hrsh7th/nvim-cmp"  -- main completion plugin
-    use "hrsh7th/cmp-buffer"  -- buffer completions
-    use "hrsh7th/cmp-path"  -- path completions
+    use "hrsh7th/nvim-cmp"     -- main completion plugin
+    use "hrsh7th/cmp-buffer"   -- buffer completions
+    use "hrsh7th/cmp-path"     -- path completions
     use "hrsh7th/cmp-cmdline"  -- cmdline completions
     use "hrsh7th/cmp-nvim-lsp"
+    use "windwp/nvim-autopairs"  -- Auto close brackets, braces etc.
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
 
     -- LSP
-    use "neovim/nvim-lspconfig"		    -- enable LSP
-    use "williamboman/nvim-lsp-installer"   -- simple language installer
+    use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    }
+    use "neovim/nvim-lspconfig"
+    use "williamboman/mason-lspconfig.nvim"
 
-    -- Telescope
+    -- Linters
+
+    -- Telescopeplugins.lua
     use {
 	"nvim-telescope/telescope.nvim", tag = "0.1.0",
 	requires = { {"nvim-lua/plenary.nvim"} }
@@ -71,8 +79,9 @@ return packer.startup(function(use)
 	run = ":TSUpdate",
     }
     use "p00f/nvim-ts-rainbow"
+    -- Language specific comments
+    use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- Colour schemes
-    use "luisiacc/gruvbox-baby"
 
 end)
