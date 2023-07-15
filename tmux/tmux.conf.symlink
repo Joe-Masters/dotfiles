@@ -19,6 +19,9 @@ set -g status-right "\
 #[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS],}🔹%H:%M \
 #[fg=$HIGHLIGHT_STATUS, bg=#1c1c1c]#{?client_prefix,#[fg=#1c1c1c bg=$HIGHLIGHT_STATUS,}"
 
+# Mouse
+set -g mouse on
+
 # Theme stuff
 BG_COLOUR_INACTIVE=#1c1c1c
 BG_COLOUR_ACTIVE=#1b1b1b
@@ -94,13 +97,12 @@ unbind -T copy-mode-vi Space; #Default for begin-selection
 unbind -T copy-mode-vi Enter; #Default for copy-selection
 
 bind -T copy-mode-vi v send-keys -X begin-selection
-#bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
 bind -T copy-mode-vi y
 
-
-# paste using 'p'
-unbind p
-bind p paste-buffer
+# paste using 'v'
+unbind v
+bind v paste-buffer
 
 # use system clipboard
 set -s set-clipboard on 
