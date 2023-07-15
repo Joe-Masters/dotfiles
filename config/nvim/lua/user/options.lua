@@ -12,14 +12,14 @@ local options = {
     pumheight = 10,		    -- Pop up menu height
     relativenumber = true,
     shiftround = true,
-    shiftwidth = 4,
+    shiftwidth = 2,
     showtabline = 2,		    -- Always show tabs
     smartcase = true,
     smarttab = true,
     spell = true,
     spelllang = "en_gb",
-    softtabstop = 4,
-    tabstop = 8,
+    softtabstop = 2,
+    tabstop = 2,                    -- See tabstop in :h options for tab info
     list = true,		    -- Show hidden chars
 }
 
@@ -27,7 +27,7 @@ vim.opt.path:append { "**" }        -- equiv to .vim set path += ** for tab sear
 
 -- Set hidden chars
 vim.opt.listchars.eol = ' '
-vim.opt.listchars.tab = '>- '
+vim.opt.listchars.tab = '>-'
 
 for option, value in pairs(options) do
     vim.opt[option] = value
