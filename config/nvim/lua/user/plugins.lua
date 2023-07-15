@@ -83,5 +83,5 @@ return packer.startup(function(use)
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- Colour schemes
-
+		use { "catppuccin/nvim", as = "catppuccin" }
 end)

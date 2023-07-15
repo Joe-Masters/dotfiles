@@ -1,7 +1,7 @@
 vim.cmd[[
 try
-    colorscheme gruvbox-baby
+    colorscheme catppuccin-mocha
 catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme slate
+    colorscheme desert
 endtry  
 ]]
