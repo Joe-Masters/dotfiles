@@ -35,7 +35,7 @@ rightprompt()
     printf "%*s" $COLUMNS "$(date +%A\ %H\:%M\:%S)"
 }
 DATEPROMPT="\033[2;36m\[\$(tput sc; rightprompt; tput rc)\]\033[0m"
-NERDPROMPT=$(printf "\ue34b \ ")
+NERDPROMPT=$(printf "\ue34b  ")
 USERPROMPT="\033[95m\u\033[0m"
 AT_PROMPT="\033[36;2m@\033[0m"
 HOSTPROMPT="\033[95;1m\h\033[0m"
