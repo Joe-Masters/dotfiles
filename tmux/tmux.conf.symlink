@@ -1,6 +1,8 @@
 HIGHLIGHT_STATUS=#ff69b4
-# tmux display things in 256 colour
-set -g default-terminal "screen-256color-bce"
+
+# colour
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",$TERM:RGB"
 
 set -g history-limit 20000
 
@@ -75,7 +77,10 @@ bind w kill-window
 unbind x
 bind x kill-pane
 
+# Window navigation
 bind Bspace last-window
+bind -n M-H previous-window
+bind -n M-L next-window
 
 #### copy mode : vim ####
 

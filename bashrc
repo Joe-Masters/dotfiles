@@ -24,6 +24,7 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
+alias ls="ls -hal --color"
 alias vi="vim"
 alias vim="nvim"
 alias view="gnome-open"
@@ -49,8 +50,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Terminal stuff
 export TERMINFO=/etc/terminfo
-export TERM=linux
-export TERM=xterm-256color
 
 . "$HOME/.cargo/env"
 source /home/joe/dev/alacritty/extra/completions/alacritty.bash
