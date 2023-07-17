@@ -1,4 +1,12 @@
 HIGHLIGHT_STATUS=#ff69b4
+MOCHA_BASE=#1e1e2e
+MOCHA_SKY=#89dceb
+MOCHA_PINK=#f5c2e7
+MOCHA_RED=#f38ba8
+MOCHA_TEXT=#cdd6f4
+MOCHA_SURFACE2=#585b70
+BG_COLOUR=$MOCHA_BASE
+HIGHLIGHT_STATUS=$MOCHA_RED
 
 # colour
 set -g default-terminal "tmux-256color"
@@ -6,28 +14,35 @@ set -ag terminal-overrides ",$TERM:RGB"
 
 set -g history-limit 20000
 
+# Theme stuff
+set -g window-style "bg=$MOCHA_BASE"
+set -ag window-active-style bg=terminal
+set -g status-bg $MOCHA_BASE 
+set -ag status-style "fg=$HIGHLIGHT_STATUS"
+set -g status-left ""
+set -g status-right "\
+#[fg=$BG_COLOUR, bg=$BG_COLOUR]#{?client_prefix,#[fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR],} 󰊠 󰊠 󰊠 󰮯 󰇘󰇘 "
+
 # Status bar
 set -g status-position top
-set -g status-style "bg=#1c1c1c"
+set -g status-style "bg=$MOCHA_SKY"
 set -g status-interval 3
 
-set -g status-left-length 150
+set -g status-left-length 3
+
+# Status bar tabs (windows) appearance
+setw -g window-status-current-style "fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR bold"
+setw -g window-status-current-format " #I#[fg=$MOCHA_TEXT]:#[fg=$MOCHA_TEXT]#W#[fg=$MOCHA_SURFACE2]#F "
+
+setw -g window-status-style "fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR "
+setw -g window-status-format " #I#[fg=$MOCHA_SURFACE2]:#[fg=$MOCHA_SURFACE2]#W#[fg=$MOCHA_SURFACE2]#F "
 
 # Mouse
 set -g mouse on
 
-# Theme stuff
-BG_COLOUR=#1c1c1c
-set -g window-style "bg=#220707"
-set -ag window-active-style bg=terminal
-set -g status-bg default
-set -ag status-style "fg=$HIGHLIGHT_STATUS"
-set -g status-right "\
-#[fg=$BG_COLOUR, bg=$BG_COLOUR]#{?client_prefix,#[fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR],} 󰊠 󰊠 󰊠 󰮯 󰇘󰇘 "
-
-# set the pane border colors 
-set -ag pane-border-style "bg=#1c1c1c, fg=#4d4d4d" 
-set -ag pane-active-border-style "bg=#083c3a, fg=$HIGHLIGHT_STATUS"
+# set the pane border colours 
+set -ag pane-border-style "bg=$MOCHA_BASE fg=$MOCHA_RED" 
+set -ag pane-active-border-style "bg=$MOCHA_BASE, fg=$MOCHA_RED"
 # automatically renumber tmux windows
 set -g renumber-windows on
 
