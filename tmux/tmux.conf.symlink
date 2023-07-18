@@ -72,6 +72,12 @@ set -g escape-time 0
 unbind =
 bind = select-layout tiled
 
+# moving panes
+unbind <
+bind < command-prompt -p "join pane from:"  "join-pane -s :'%%'"
+unbind >
+bind > command-prompt -p "send pane to:" "join-pane -t :'%%'"
+
 # reload config file
 bind r source-file ~/.tmux.conf \; display ".tmux.conf reloaded!"
 
