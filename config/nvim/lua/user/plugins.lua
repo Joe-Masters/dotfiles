@@ -84,7 +84,7 @@ return packer.startup(function(use)
 
 		-- git
 		use "lewis6991/gitsigns.nvim"
-
+		use "tpope/vim-fugitive"
     -- Language specific comments
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
