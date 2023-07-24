@@ -30,11 +30,21 @@ local normal = {
     -- Navigate buffers
     { "<leader>bn", ":bnext<CR>" },
     { "<leader>bp", ":bprevious<CR>" },
+    -- Tabs
+    { "<leader>nt", ":tabnew<CR>" },
+    { "<leader>wt", ":tabclose<CR>" },
+    { "<C-I>", ":tabnext<CR>" },  -- C-I == tab
+    { "<S-Tab>", ":tabprevious<CR>" },
     -- Toggle Spellcheck
     { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
     -- Telescope
-    { "<leader>/", "<cmd>Telescope live_grep<cr>" },
+    { "<leader>b", "<cmd>Telescope buffers<cr>" },
     { "<leader>f", "<cmd>Telescope find_files<cr>" },
+    { "<leader>gc", "<cmd>Telescope git_commits<cr>" },
+    { "<leader>gs", "<cmd>Telescope git_status<cr>" },
+    { "<leader>gb", "<cmd>Telescope git_branches<cr>" },
+    { "<leader>/", "<cmd>Telescope live_grep<cr>" },
+    { "<leader>s", "<cmd>Telescope spell_suggest<cr>" },
 }
 
 for _, keymapping in ipairs(normal) do
@@ -55,9 +65,21 @@ local visual = {
     -- Move text up and down ((visual) block of text)
     { "<A-j>", ":move '>+1<CR>gv-gv" },
     { "<A-k>", ":move '<-2<CR>gv-gv" },
+    { "jk", "<ESC>" },
 }
 
 for _, keymapping in ipairs(visual) do
     local new_value, old_value = table.unpack(keymapping)
     keymap(visual_mode, new_value, old_value, opts)
 end
+
+local command = {
+  -- quit all (when using multiple tabs)
+  { "<S-q>", "quitall" },
+}
+
+for _, keymapping in ipairs(command) do
+    local new_value, old_value = table.unpack(keymapping)
+    keymap(command_mode, new_value, old_value, opts)
+end
+
