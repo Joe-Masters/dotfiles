@@ -95,9 +95,6 @@ bind t new-window
 unbind w
 bind w kill-window
 
-unbind x
-bind x kill-pane
-
 # Window navigation
 bind Bspace last-window
 bind -n M-H previous-window
