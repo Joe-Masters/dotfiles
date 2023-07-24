@@ -1,16 +1,18 @@
 -- Neovim-specific config
 -- A lot borrowed from arnvald/viml-to-lua but mostly nicknisi/dotfiles
 
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
+require "user.autopairs"
 require "user.colorscheme"
+require "user.comment"
 require "user.cmp"
+require "user.gitsigns"
+require "user.keymaps"
 require "user.lsp"
+require "user.options"
+require "user.plugins"
 require "user.telescope"
 require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
+
 
 -- Tag jumpings with ctags
 --command! MakeTags !ctags -R .

@@ -65,10 +65,12 @@ return packer.startup(function(use)
 
     -- Linters
 
+	  -- Async
+		use "nvim-lua/plenary.nvim"
     -- Telescopeplugins.lua
     use {
-	"nvim-telescope/telescope.nvim", tag = "0.1.0",
-	requires = { {"nvim-lua/plenary.nvim"} }
+		"nvim-telescope/telescope.nvim", tag = "0.1.0",
+		"nvim-telescope/telescope-live-grep-args.nvim"
     }
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }  -- improved sorting performance
@@ -79,6 +81,10 @@ return packer.startup(function(use)
 	run = ":TSUpdate",
     }
     use "p00f/nvim-ts-rainbow"
+
+		-- git
+		use "lewis6991/gitsigns.nvim"
+
     -- Language specific comments
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
