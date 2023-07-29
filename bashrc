@@ -43,7 +43,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 function virtualenv_info()
 {
-  [[ -n "$VIRTUAL_ENV" ]] && printf "(${VIRTUAL_ENV##*/}) "
+  [[ -n "$VIRTUAL_ENV" ]] && printf " (${VIRTUAL_ENV##*/}) "
 }
 
 function rightprompt()
