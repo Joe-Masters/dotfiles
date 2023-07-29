@@ -1,4 +1,4 @@
-# bash/zsh git prompt support
+# bash/zsh git prompt support with some nerdfont modifications
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
 # Distributed under the GNU General Public License, version 2.0.
@@ -277,7 +277,7 @@ __git_ps1_colorize_gitstring ()
 	if [ -n "$c" ]; then
 		c="$branch_color$c$c_clear"
 	fi
-	b="$branch_color$b$c_clear"
+	b="$branch_color $b$c_clear"
 
 	if [ -n "$w" ]; then
 		w="$bad_color$w$c_clear"
@@ -535,8 +535,8 @@ __git_ps1 ()
 		if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ] &&
 		   [ "$(git config --bool bash.showDirtyState)" != "false" ]
 		then
-			git diff --no-ext-diff --quiet || w="*"
-			git diff --no-ext-diff --cached --quiet || i="+"
+			git diff --no-ext-diff --quiet || w=" "
+			git diff --no-ext-diff --cached --quiet || i=" "
 			if [ -z "$short_sha" ] && [ -z "$i" ]; then
 				i="#"
 			fi
@@ -544,14 +544,14 @@ __git_ps1 ()
 		if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ] &&
 		   git rev-parse --verify --quiet refs/stash >/dev/null
 		then
-			s="$"
+			s="󰸐 "
 		fi
 
 		if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ] &&
 		   [ "$(git config --bool bash.showUntrackedFiles)" != "false" ] &&
 		   git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>/dev/null
 		then
-			u="%${ZSH_VERSION+%}"
+			u=" ${ZSH_VERSION+%}"
 		fi
 
 		if [ -n "${GIT_PS1_COMPRESSSPARSESTATE-}" ] &&
@@ -568,7 +568,7 @@ __git_ps1 ()
 
 	b=${b##refs/heads/}
 	if [ $pcmode = yes ] && [ $ps1_expanded = yes ]; then
-		__git_ps1_branch_name=$b
+		__git_ps1_branch_name="$b"
 		b="\${__git_ps1_branch_name}"
 	fi
 
