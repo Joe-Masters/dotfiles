@@ -87,13 +87,14 @@ bind | split-window -h -c "#{pane_current_path}"
 unbind '"'
 bind - split-window -v -c "#{pane_current_path}"
 
-# Remapping keys to be more like a standard program
+# Remap t to open new window (like a tab) 
 
 unbind t
 bind t new-window
 
+# Ask to confirm before closing windows (tabs)
 unbind w
-bind w kill-window
+bind w confirm kill-window
 
 # Window navigation
 bind Bspace last-window
