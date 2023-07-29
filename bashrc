@@ -1,9 +1,15 @@
 # .bashrc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+function source_if_exists() {
+  if [ -f "${1}" ]; then
+    . "${1}"
+  fi
+}
+
+source_if_exists /etc/bashrc
+source_if_exists /usr/share/bash-completion/bash_completion
+source_if_exists ~/scripts/git_prompt.sh
+
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -31,7 +37,16 @@ alias view="gnome-open"
 alias open="gnome-open"
 
 # Prompt
-rightprompt()
+
+# Disable python venv prompt and replace with custom handler
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+function virtualenv_info()
+{
+  [[ -n "$VIRTUAL_ENV" ]] && printf "(${VIRTUAL_ENV##*/}) "
+}
+
+function rightprompt()
 {
     printf "%*s" $COLUMNS "$(date +%A\ %H\:%M\:%S)"
 }
@@ -40,7 +55,15 @@ NERDPROMPT=$(printf "\ue34b  ")
 USERPROMPT="\033[95m\u\033[0m"
 AT_PROMPT="\033[36;2m@\033[0m"
 HOSTPROMPT="\033[95;1m\h\033[0m"
-PS1="${DATEPROMPT}${USERPROMPT}${AT_PROMPT}${HOSTPROMPT}:\w\n${NERDPROMPT}${RESET}"
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWCOLORHINTS=true
+VENV_PROMPT="\033[2;36m\[\$(virtualenv_info)\]\033[0m"
+PS1="\
+${DATEPROMPT}\
+${VENV_PROMPT}\
+${USERPROMPT}${AT_PROMPT}${HOSTPROMPT}:\w\
+\$(__git_ps1) \
+\n${NERDPROMPT}${RESET}"
 
 unset rc
 
