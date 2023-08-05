@@ -33,8 +33,8 @@ local normal = {
     -- Tabs
     { "<leader>nt", ":tabnew<CR>" },
     { "<leader>wt", ":tabclose<CR>" },
-    { "<C-I>", ":tabnext<CR>" },  -- C-I == tab
-    { "<S-Tab>", ":tabprevious<CR>" },
+    { "<A-n>", ":tabnext<CR>" },
+    { "<A-p>", ":tabprevious<CR>" },
     -- Toggle Spellcheck
     { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
     -- Telescope
