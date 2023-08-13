@@ -38,12 +38,13 @@ local normal = {
     -- Toggle Spellcheck
     { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
     -- Telescope
-    { "<leader>b", "<cmd>Telescope buffers<cr>" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>" },
     { "<leader>f", "<cmd>Telescope find_files<cr>" },
     { "<leader>gc", "<cmd>Telescope git_commits<cr>" },
     { "<leader>gs", "<cmd>Telescope git_status<cr>" },
     { "<leader>gb", "<cmd>Telescope git_branches<cr>" },
-    { "<leader>/", "<cmd>Telescope live_grep<cr>" },
+    --{ "<leader>/", "<cmd>Telescope live_grep<cr>" },
+    {"<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>" },
     { "<leader>s", "<cmd>Telescope spell_suggest<cr>" },
 }
 

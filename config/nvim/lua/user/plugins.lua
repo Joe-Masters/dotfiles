@@ -3,16 +3,16 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system ({
-	"git",
-	"clone",
-	"--depth",
-	"1",
-	"https://github.com/wbthomason/packer.nvim",
-	install_path,
-    })
-    print("Installing packer close and reopen Neovim...")
-    vim.cmd [[packadd packer.nvim]]
+  PACKER_BOOTSTRAP = fn.system ({
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  })
+  print("Installing packer close and reopen Neovim...")
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- Autocommand that reloads neovim when plugins.lua file is saved
@@ -31,11 +31,11 @@ end
 
 -- Have packer use a popup window
 packer.init({
-    display = {
-	open_fn = function()
-	    return require("packer.util").float({ border = "rounded" })
-	end,
-    },
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+  },
 })
 
 -- Plugins to install
@@ -65,29 +65,28 @@ return packer.startup(function(use)
 
     -- Linters
 
-	  -- Async
-		use "nvim-lua/plenary.nvim"
-    -- Telescopeplugins.lua
+    -- Telescope plugins
     use {
-		"nvim-telescope/telescope.nvim", tag = "0.1.0",
-		"nvim-telescope/telescope-live-grep-args.nvim"
+      "nvim-telescope/telescope.nvim", tag = "0.1.2",
+      requires = { {"nvim-lua/plenary.nvim"} }
     }
+    use "nvim-telescope/telescope-live-grep-args.nvim"
 
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }  -- improved sorting performance
 
     -- Treesitter
     use {
-	"nvim-treesitter/nvim-treesitter",
-	run = ":TSUpdate",
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
     }
     use "p00f/nvim-ts-rainbow"
 
-		-- git
-		use "lewis6991/gitsigns.nvim"
-		use "tpope/vim-fugitive"
+    -- git
+    use "lewis6991/gitsigns.nvim"
+    use "tpope/vim-fugitive"
     -- Language specific comments
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- Colour schemes
-		use { "catppuccin/nvim", as = "catppuccin" }
+    use { "catppuccin/nvim", as = "catppuccin", tag = "v1.3.0" }
 end)
