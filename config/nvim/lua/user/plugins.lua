@@ -18,8 +18,8 @@ end
 -- Autocommand that reloads neovim when plugins.lua file is saved
 vim.cmd([[
     augroup packer_user_config
-	autocmd!
-	autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerSync
     augroup end
 ]])
 
@@ -52,6 +52,8 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lsp"
     use "windwp/nvim-autopairs"  -- Auto close brackets, braces etc.
 
+    -- Debug Adapter Protocol (DAP) client
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     -- Snippets
     use "L3MON4D3/LuaSnip"
 
