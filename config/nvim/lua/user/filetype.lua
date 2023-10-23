@@ -3,6 +3,6 @@ vim.filetype.add({
     ["Jenkinsfile"] = "groovy",
   },
   pattern = {
-    ["*Jenkinsfile*"] = "groovy",
+    ["Jenkinsfile.*"] = "groovy",
   },
 })

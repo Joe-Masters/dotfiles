@@ -67,6 +67,7 @@ local visual = {
     { "<A-j>", ":move '>+1<CR>gv-gv" },
     { "<A-k>", ":move '<-2<CR>gv-gv" },
     { "jk", "<ESC>" },
+    { "C-/", "<Plug>(comment_toggle_blockwise_current)" },
 }
 
 for _, keymapping in ipairs(visual) do
@@ -76,7 +77,7 @@ end
 
 local command = {
   -- quit all (when using multiple tabs)
-  { "<S-q>", "quitall" },
+  --{ "<S-q>", "quitall" },
 }
 
 for _, keymapping in ipairs(command) do

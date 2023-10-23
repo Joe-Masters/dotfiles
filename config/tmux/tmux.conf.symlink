@@ -42,7 +42,7 @@ set -g mouse on
 
 # set the pane border colours 
 set -ag pane-border-style "bg=$MOCHA_BASE fg=$MOCHA_RED" 
-set -ag pane-active-border-style "bg=$MOCHA_BASE, fg=$MOCHA_RED"
+set -ag pane-active-border-style "bg=$MOCHA_BASE, fg=$MOCHA_TEXT"
 # automatically renumber tmux windows
 set -g renumber-windows on
 
@@ -115,7 +115,10 @@ unbind -T copy-mode-vi Enter; #Default for copy-selection
 
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -sel clip"
-bind -T copy-mode-vi y
+bind-key -T copy-mode-vi MouseDrag1 send-keys -X begin-selection
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe
+bind-key -T copy-mode-vi SecondClick1 send-keys -X select-word
+bind-key -T copy-mode-vi TripleClick1 send-keys -X select-line
 
 # paste using 'v'
 unbind v

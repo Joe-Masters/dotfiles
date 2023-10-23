@@ -48,10 +48,13 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
+# Aliases
+
 alias vi="vim"
 alias vim="nvim"
 alias view="gnome-open"
 alias open="gnome-open"
+alias delete-pr="git branch -r --list "origin/pr/*" | xargs -r git branch -d --remote"
 
 # Prompt
 
