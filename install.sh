@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-DOTFILES="$(pwd)"
+DOTFILES="$(dirname $0)"
 COLOR_GRAY="\033[1;38;5;243m"
 COLOR_BLUE="\033[1;34m"
 COLOR_GREEN="\033[1;32m"
@@ -11,12 +11,24 @@ COLOR_NONE="\033[0m"
 
 title() {
   echo -e "\n${COLOR_PURPLE}$1${COLOR_NONE}"
-  echo -e "$S{COLOR_GRAY}==========================${COLOR_NONE}\n"
+  echo -e "${COLOR_GRAY}==========================${COLOR_NONE}\n"
 }
 
+error() {
+    echo -e "${COLOR_RED}Error: ${COLOR_NONE}$1"
+    exit 1
+}
+
+warning() {
+    echo -e "${COLOR_YELLOW}Warning: ${COLOR_NONE}$1"
+}
 
 info() {
     echo -e "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
+}
+
+success() {
+    echo -e "${COLOR_GREEN}$1${COLOR_NONE}"
 }
 
 get_linkables() {
@@ -25,18 +37,24 @@ get_linkables() {
 
 
 setup_symlinks() {
-    title "Creating symlinks"
-	
-    for file in $(get_linkables) ; do
-	target="$HOME/.$(basename "$file" '.symlink')"
-	if [ -e "$target" ]; then
-	   info "~${target#$HOME} already exists... Skipping." 
+  title "Creating symlinks"
+
+  for file in $(get_linkables) ; do
+  target="$HOME/.$(basename "$file" '.symlink')"
+  if [ -e "$target" ]; then
+    info "~${target#$HOME} already exists... Skipping." 
+  else
+    info "Creating symlink for ${file}"
+    ln -s "${file}" "${target}"
+  fi
+  done
+
 }
 
 
 case "$1" in
-    get_linkables)
-		get_linkables
+    link)
+      setup_symlinks
 		;;
 esac	
 	    
