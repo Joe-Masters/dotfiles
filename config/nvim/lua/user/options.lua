@@ -26,7 +26,10 @@ local options = {
 vim.opt.path:append { "**" }        -- equiv to .vim set path += ** for tab searching subdirs 
 
 -- Set hidden chars
-vim.opt.listchars = { eol = '⏎', tab = '->|', trail = '⏺'}
+vim.opt.listchars = { eol = '⏎', tab = '->|', trail = '⏺' }
+
+-- Diff settings - ignore all whitespace and default to vertical split diff
+vim.opt.diffopt:append { "iwhiteall", "vertical" }
 
 for option, value in pairs(options) do
     vim.opt[option] = value
