@@ -3,10 +3,13 @@
 local options = {
     clipboard = "unnamedplus",	    -- Allow Neovim access to system clipboard 
     cmdheight = 2,		    -- More space in the Neovim cmdline for displaying messages
+    colorcolumn = "90",
     conceallevel = 0,		    -- So that `` is visible in markdown files
     expandtab = true,
+    foldmethod = "syntax",
     hlsearch = true,		    -- Highlight all matches on previous search pattern
     ignorecase = true,		    -- Ignore case in search patterns
+    list = true,		    -- Show hidden chars
     mouse = "a",			    -- Allow the mouse to be used in Neovim
     number = true,
     pumheight = 10,		    -- Pop up menu height
@@ -16,11 +19,10 @@ local options = {
     showtabline = 2,		    -- Always show tabs
     smartcase = true,
     smarttab = true,
+    softtabstop = 2,
     spell = true,
     spelllang = "en_gb",
-    softtabstop = 2,
     tabstop = 2,                    -- See tabstop in :h options for tab info
-    list = true,		    -- Show hidden chars
 }
 
 vim.opt.path:append { "**" }        -- equiv to .vim set path += ** for tab searching subdirs 
