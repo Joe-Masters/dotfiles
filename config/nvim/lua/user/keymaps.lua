@@ -30,6 +30,12 @@ local normal = {
     -- Navigate buffers
     { "<leader>bn", ":bnext<CR>" },
     { "<leader>bp", ":bprevious<CR>" },
+    -- Diffs
+    { "<leader>dl", ":diffget LOCAL<CR>" },
+    { "<leader>dr", ":diffget REMOTE<CR>" },
+    -- CursorLine
+    { "<leader>sl", "<cmd>hi CursorLine gui=underline guibg=none cterm=underline guifg=#ffef28<CR>" },
+    { "<leader>nl", ":hi clear CursorLine<CR>" },
     -- Tabs
     { "<leader>nt", ":tabnew<CR>" },
     { "<leader>wt", ":tabclose<CR>" },
@@ -39,13 +45,13 @@ local normal = {
     { "<leader>sp", ":setlocal spell! spelllang=en_gb<CR>" },
     -- Telescope
     { "<leader>fb", "<cmd>Telescope buffers<cr>" },
-    { "<leader>f", "<cmd>Telescope find_files<cr>" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>" },
     { "<leader>gc", "<cmd>Telescope git_commits<cr>" },
     { "<leader>gs", "<cmd>Telescope git_status<cr>" },
     { "<leader>gb", "<cmd>Telescope git_branches<cr>" },
     --{ "<leader>/", "<cmd>Telescope live_grep<cr>" },
     {"<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>" },
-    { "<leader>s", "<cmd>Telescope spell_suggest<cr>" },
+    { "<leader>ss", "<cmd>Telescope spell_suggest<cr>" },
 }
 
 for _, keymapping in ipairs(normal) do
