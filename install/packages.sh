@@ -1,5 +1,9 @@
 #!/usr/bin/sh
-if [ -f /etc/os-release ]; then
+
+. ./functions.sh
+
+install_packages() {
+  if [ -f /etc/os-release ]; then
   . /etc/os-release
   OS=$ID
   VER=$VERSION_ID
@@ -24,3 +28,4 @@ echo Detected machine is running "${OS}" "${VER}", attempting to use package man
   neovim \
   python3-neovim \
   -"${INSTALL_ARGS}"
+}

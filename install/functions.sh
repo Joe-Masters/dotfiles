@@ -1,6 +1,4 @@
-#!/usr/bin/sh
 
-DOTFILES="$(dirname $0)"
 COLOR_GRAY="\033[1;38;5;243m"
 COLOR_BLUE="\033[1;34m"
 COLOR_GREEN="\033[1;32m"
@@ -31,30 +29,3 @@ success() {
     echo -e "${COLOR_GREEN}$1${COLOR_NONE}"
 }
 
-get_linkables() {
-    find -H "$DOTFILES" -maxdepth 3 -name '*.symlink'
-}
-
-
-setup_symlinks() {
-  title "Creating symlinks"
-
-  for file in $(get_linkables) ; do
-  target="$HOME/.$(basename "$file" '.symlink')"
-  if [ -e "$target" ]; then
-    info "~${target#$HOME} already exists... Skipping." 
-  else
-    info "Creating symlink for ${file}"
-    ln -s "${file}" "${target}"
-  fi
-  done
-
-}
-
-
-case "$1" in
-    link)
-      setup_symlinks
-		;;
-esac	
-	    
