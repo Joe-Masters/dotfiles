@@ -2,7 +2,7 @@
 
 ORIGINGAL_WD="${PWD}"
 cd "$(dirname "${0}")" || exit 1
-DOTFILES=..
+DOTFILES="$(cd ..; pwd)"
 
 . ./functions.sh
 . ./packages.sh
