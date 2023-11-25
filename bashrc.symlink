@@ -3,12 +3,20 @@
 function source_if_exists() {
   if [ -f "${1}" ]; then
     . "${1}"
+    return 0
   fi
+  return 1
 }
 
 source_if_exists /etc/bashrc
 source_if_exists /usr/share/bash-completion/bash_completion
+GIT_PROMPT_AVAILABLE=false
 source_if_exists ~/scripts/git_prompt.sh
+if [ $? == 0 ]; then
+  GIT_PROMPT_AVAILABLE=true
+fi
+source_if_exists ~/.cargo/env
+source_if_exists ~/dev/alacritty/extra/completions/alacritty.bash
 
 
 # User specific environment
@@ -58,12 +66,16 @@ HOSTPROMPT="\033[95;1m\h\033[0m"
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWCOLORHINTS=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PROMPT=
+if [ "${GIT_PROMPT_AVAILABLE}" = true ]; then
+  GIT_PROMPT="\$(__git_ps1)"
+fi
 VENV_PROMPT="\033[2;36m\[\$(virtualenv_info)\]\033[0m"
 PS1="\
 ${DATEPROMPT}\
 ${VENV_PROMPT}\
 ${USERPROMPT}${AT_PROMPT}${HOSTPROMPT}:\w\
-\$(__git_ps1) \
+${GIT_PROMPT} \
 \n${NERDPROMPT}${RESET}"
 
 unset rc
@@ -75,8 +87,6 @@ export NVM_DIR="$HOME/.nvm"
 # Terminal stuff
 export TERMINFO=/etc/terminfo
 
-. "$HOME/.cargo/env"
-source /home/joe/dev/alacritty/extra/completions/alacritty.bash
 
 # Set nvim to be default editor
 export EDITOR=/usr/bin/nvim
