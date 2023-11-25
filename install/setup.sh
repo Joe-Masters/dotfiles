@@ -29,9 +29,13 @@ setup_symlinks() {
 
 
 case "$1" in
-    link)
+    --all)
+      setup_symlinks
+      install_packages
+      ;;
+    --links)
       setup_symlinks;;
-    packages)
+    --packages)
       install_packages;;
 esac	
 
