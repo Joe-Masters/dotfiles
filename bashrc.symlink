@@ -27,7 +27,7 @@ if [ $? == 0 ]; then
 fi
 source_if_exists ~/.cargo/env
 source_if_exists ~/dev/alacritty/extra/completions/alacritty.bash
-
+source_if_exists ~/dev/work_dotfiles/work_bash
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
