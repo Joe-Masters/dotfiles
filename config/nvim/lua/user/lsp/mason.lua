@@ -2,6 +2,7 @@ local servers = {
   "bashls",
   "clangd",
   "cssls",
+  "gopls",
   "groovyls",
   "html",
   "jsonls",
