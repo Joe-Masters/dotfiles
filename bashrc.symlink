@@ -1,4 +1,14 @@
 # .bashrc
+# Get dotfiles directory
+SOURCE=${BASH_SOURCE[0]}
+while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DOTFILES_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  # if $SOURCE was a relative symlink, we need to resolve it relative to the path 
+  # where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE=$DOTFILES_DIR/$SOURCE
+done
+DOTFILES_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
 function source_if_exists() {
   if [ -f "${1}" ]; then
@@ -11,7 +21,7 @@ function source_if_exists() {
 source_if_exists /etc/bashrc
 source_if_exists /usr/share/bash-completion/bash_completion
 GIT_PROMPT_AVAILABLE=false
-source_if_exists ~/scripts/git_prompt.sh
+source_if_exists "${DOTFILES_DIR}"/scripts/git_prompt.sh
 if [ $? == 0 ]; then
   GIT_PROMPT_AVAILABLE=true
 fi
@@ -38,7 +48,6 @@ if [ -d ~/.bashrc.d ]; then
 	done
 fi
 
-alias ls="ls -hal --color"
 alias vi="vim"
 alias vim="nvim"
 alias view="gnome-open"
