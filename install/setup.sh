@@ -25,8 +25,24 @@ setup_symlinks() {
   fi
   done
 
-}
+  CONFIG="${HOME}/.config"
+  info "Installing config to ${CONFIG}"
+  if [ -f "${CONFIG}" ]; then
+    info "Making ${CONFIG} directory"
+    mkdir -p "${CONFIG}"
+  fi
 
+  DOTFILES_CONFIG=$(find "$DOTFILES/config" -maxdepth 1 2>/dev/null)
+  for config in $DOTFILES_CONFIG; do
+    target="$CONFIG/$(basename $config)"
+    if [ -e "$target" ]; then
+        info "~${target#$HOME} already exists... Skipping."
+    else
+        info "Creating symlink for $config"
+        ln -s "$config" "$target"
+    fi
+  done
+}
 
 case "$1" in
     --all)
