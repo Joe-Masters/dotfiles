@@ -55,6 +55,10 @@ alias vim="nvim"
 alias view="gnome-open"
 alias open="gnome-open"
 alias delete-pr="git branch -r --list "origin/pr/*" | xargs -r git branch -d --remote"
+function danger-prune() {
+  git fetch --prune --prune-tags
+  git branch -vv | grep '^ ' | awk '/: gone]/{print $1}' | xargs git branch -D
+}
 
 # Prompt
 

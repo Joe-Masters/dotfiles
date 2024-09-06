@@ -15,6 +15,7 @@ install_packages() {
   case "${OS}" in
     fedora) PACKMAN=dnf; INSTALL_ARGS=y;;
     debian) PACKMAN=apt-get; INSTALL_ARGS=y;;
+    ubuntu) PACKMAN=apt-get; INSTALL_ARGS=y;;
   esac
 
   info "Detected machine is running ${OS} ${VER}, attempting to use ${PACKMAN}"
