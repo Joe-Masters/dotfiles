@@ -14,6 +14,7 @@ install_packages() {
   fi
   case "${OS}" in
     fedora) PACKMAN=dnf; INSTALL_ARGS=y;;
+    ubuntu) PACKMAN=apt-get; INSTALL_ARGS=y;;
     debian) PACKMAN=apt-get; INSTALL_ARGS=y;;
   esac
 
@@ -22,7 +23,7 @@ install_packages() {
   "${PACKMAN}" install \
     git \
     bash-completion \
-    python \
+    python3 \
     tmux \
     tree \
     ranger \

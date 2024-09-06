@@ -27,7 +27,7 @@ if [ $? == 0 ]; then
 fi
 source_if_exists ~/.cargo/env
 source_if_exists ~/dev/alacritty/extra/completions/alacritty.bash
-
+source_if_exists ~/.devenv_bashrc
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -98,4 +98,4 @@ export TERMINFO=/etc/terminfo
 
 
 # Set nvim to be default editor
-export EDITOR=/usr/bin/nvim
+#export EDITOR=/usr/bin/nvim
