@@ -17,18 +17,20 @@ set -g history-limit 20000
 # Theme stuff
 set -g window-style "bg=$MOCHA_BASE"
 set -ag window-active-style bg=terminal
-set -g status-bg $MOCHA_BASE 
+set -g status-bg $MOCHA_BASE
 set -ag status-style "fg=$HIGHLIGHT_STATUS"
 set -g status-left ""
 set -g status-right "\
 #[fg=$BG_COLOUR, bg=$BG_COLOUR]#{?client_prefix,#[fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR],} 󰊠 󰊠 󰊠 󰮯 󰇘󰇘 "
+# #[fg=$BG_COLOUR, bg=$BG_COLOUR]#{?client_prefix,#[fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR],} #(status) 󰊠 󰊠 󰊠 󰮯 󰇘󰇘 "
 
 # Status bar
 set -g status-position top
 set -g status-style "bg=$MOCHA_SKY"
-set -g status-interval 3
+set -g status-interval 10
 
 set -g status-left-length 3
+set -g status-right-length 120
 
 # Status bar tabs (windows) appearance
 setw -g window-status-current-style "fg=$HIGHLIGHT_STATUS bg=$BG_COLOUR bold"
@@ -40,8 +42,8 @@ setw -g window-status-format " #I#[fg=$MOCHA_SURFACE2]:#[fg=$MOCHA_SURFACE2]#W#[
 # Mouse
 set -g mouse on
 
-# set the pane border colours 
-set -ag pane-border-style "bg=$MOCHA_BASE fg=$MOCHA_RED" 
+# set the pane border colours
+set -ag pane-border-style "bg=$MOCHA_BASE fg=$MOCHA_RED"
 set -ag pane-active-border-style "bg=$MOCHA_BASE, fg=$MOCHA_RED"
 # automatically renumber tmux windows
 set -g renumber-windows on
@@ -87,7 +89,7 @@ bind | split-window -h -c "#{pane_current_path}"
 unbind '"'
 bind - split-window -v -c "#{pane_current_path}"
 
-# Remap t to open new window (like a tab) 
+# Remap t to open new window (like a tab)
 
 unbind t
 bind t new-window
@@ -107,7 +109,7 @@ bind -n M-L next-window
 setw -g mode-keys vi
 
 
-#bind [ copy-mode-vi	#Default for vi mode 
+#bind [ copy-mode-vi	#Default for vi mode
 bind -T copy-mode-vi [ send-keys -X cancel	#Make [ a sort of toggle for copy mode
 
 unbind -T copy-mode-vi Space; #Default for begin-selection
@@ -122,7 +124,7 @@ unbind v
 bind v paste-buffer
 
 # use system clipboard
-set -s set-clipboard on 
+set -s set-clipboard on
 
 #### KEY BINDINGS ####
 bind C-s set-option -g status

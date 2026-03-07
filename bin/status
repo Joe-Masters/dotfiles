@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "$(date "+%a %e %b") | \
+$(curl -s wttr.in/Cambridge?format=3) $(date +%H:%M) | \
+$(curl -s wttr.in/Montreal?format=3) $(TZ=":US/Eastern" date +%H:%M) | \
+$(battery)"
