@@ -32,9 +32,17 @@
     },
   },
   {
+    "context": "Workspace",
     "bindings": {
       "ctrl-1": ["workspace::ActivatePane", 0],
       "ctrl-2": ["workspace::ActivatePane", 1],
+      "ctrl-#": "workspace::ToggleZoom",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-;": "command_palette::Toggle",
     },
   },
   {
