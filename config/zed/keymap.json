@@ -1,0 +1,67 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    // Vim leader-style commands
+    "context": "!(vim_mode == insert) && !Terminal",
+    "bindings": {
+      "space e": "project_panel::Toggle",
+      // Project files
+      "space f": "file_finder::Toggle",
+      // Global files
+      "space o": "workspace::Open",
+      "space t": "task::Spawn",
+      "space n": "vim::GoToTab",
+      "space p": "vim::GoToPreviousTab",
+      "space g t": "git_panel::Toggle",
+      "space g h": "editor::ToggleSelectedDiffHunks",
+      "space h n": "editor::GoToHunk",
+      "space h p": "editor::GoToPreviousHunk",
+      "space h s": "git::ToggleStaged",
+      "space h r": "git::Restore",
+      "space /": "workspace::NewSearch",
+      "space b": "outline_panel::Toggle",
+      "space d": "debug_panel::Toggle",
+      "space b p": "editor::ToggleBreakpoint",
+      "space r n": "editor::Rename",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-1": ["workspace::ActivatePane", 0],
+      "ctrl-2": ["workspace::ActivatePane", 1],
+    },
+  },
+  {
+    "context": "Editor && vim_mode != normal",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+  {
+    "context": "Editor && !(AgentPanel)",
+    "bindings": {
+      "ctrl-j": "terminal_panel::Toggle",
+      "ctrl-l": "agent::Toggle",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-h": "agent::Toggle",
+      "ctrl-j": "terminal_panel::Toggle",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-k": "terminal_panel::ToggleFocus",
+      "ctrl-l": "agent::Toggle",
+    },
+  },
+]

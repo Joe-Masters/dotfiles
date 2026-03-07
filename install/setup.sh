@@ -53,7 +53,6 @@ case "$1" in
       setup_symlinks;;
     --packages)
       install_packages;;
-esac	
+esac
 
 cd "${ORIGINGAL_WD}" || exit 1
-

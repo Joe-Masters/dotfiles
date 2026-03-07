@@ -25,8 +25,5 @@ install_packages() {
     python \
     tmux \
     tree \
-    ranger \
-    neovim \
-    python3-neovim \
     -"${INSTALL_ARGS}"
 }
