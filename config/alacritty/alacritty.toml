@@ -13,7 +13,7 @@ decorations = "none"
 dynamic_title = false
 opacity = 0.90
 startup_mode = "Maximized"
-title = "tramline"
+title = "terminal"
 
 [colors]
 primary = { background = "#1e1e2e" }
