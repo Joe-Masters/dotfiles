@@ -52,7 +52,7 @@
     },
   },
   {
-    "context": "Editor && !(AgentPanel)",
+    "context": "Editor && !(AgentPanel || Terminal)",
     "bindings": {
       "ctrl-j": "terminal_panel::Toggle",
       "ctrl-l": "agent::Toggle",
@@ -69,7 +69,6 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-k": "terminal_panel::ToggleFocus",
-      "ctrl-l": "agent::Toggle",
     },
   },
 ]
