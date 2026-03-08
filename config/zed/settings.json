@@ -7,10 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "title_bar": {
+    // "show_sign_in": false,
+    "show_branch_icon": true,
+  },
   "git": {
     "inline_blame": {
-      "show_commit_summary": true
-    }
+      "show_commit_summary": true,
+    },
   },
   "buffer_font_family": "CaskaydiaCove Nerd Font",
   "languages": {

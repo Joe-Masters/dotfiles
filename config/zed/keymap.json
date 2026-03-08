@@ -71,4 +71,10 @@
       "ctrl-k": "terminal_panel::ToggleFocus",
     },
   },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-m": "git::ExpandCommitEditor",
+    },
+  },
 ]
