@@ -37,12 +37,21 @@
       "ctrl-1": ["workspace::ActivatePane", 0],
       "ctrl-2": ["workspace::ActivatePane", 1],
       "ctrl-#": "workspace::ToggleZoom",
+      "ctrl-backspace": "tab_switcher::Toggle",
     },
   },
   {
     "context": "Editor",
     "bindings": {
       "ctrl-;": "command_palette::Toggle",
+      "ctrl-backspace": "tab_switcher::Toggle",
+    },
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "ctrl-backspace": null,
+      "ctrl-x": "tab_switcher::CloseSelectedItem",
     },
   },
   {
