@@ -26,6 +26,7 @@
     },
   },
   "use_system_path_prompts": false,
+  "when_closing_with_no_tabs": "close_window",
   "vim": {
     "toggle_relative_line_numbers": true,
   },
